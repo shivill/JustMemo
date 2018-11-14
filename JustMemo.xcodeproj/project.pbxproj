@@ -1,0 +1,670 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		890ED78B2174EAD50001010E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 890ED78A2174EAD50001010E /* AppDelegate.m */; };
+		890ED78E2174EAD50001010E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 890ED78D2174EAD50001010E /* ViewController.m */; };
+		890ED7912174EAD50001010E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 890ED78F2174EAD50001010E /* Main.storyboard */; };
+		890ED7932174EAD50001010E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 890ED7922174EAD50001010E /* Assets.xcassets */; };
+		890ED7962174EAD50001010E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 890ED7942174EAD50001010E /* LaunchScreen.storyboard */; };
+		890ED7992174EAD50001010E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 890ED7982174EAD50001010E /* main.m */; };
+		890ED7A32174EAD60001010E /* JustMemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 890ED7A22174EAD60001010E /* JustMemoTests.m */; };
+		89C4135D218F02E400A24053 /* JMemoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C4135C218F02E400A24053 /* JMemoEditViewController.m */; };
+		89C413642199DBBE00A24053 /* FinishTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C413632199DBBE00A24053 /* FinishTool.m */; };
+		89C413672199DBD000A24053 /* FinishData.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C413662199DBD000A24053 /* FinishData.m */; };
+		89C41394219C7CDC00A24053 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 89C41393219C7CDC00A24053 /* blue.png */; };
+		89C41396219C7CE500A24053 /* JMemo.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 89C41395219C7CE500A24053 /* JMemo.sqlite */; };
+		89C413A3219C7CEA00A24053 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C41399219C7CEA00A24053 /* FMDatabaseQueue.m */; };
+		89C413A4219C7CEA00A24053 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C4139C219C7CEA00A24053 /* FMDatabaseAdditions.m */; };
+		89C413A5219C7CEA00A24053 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C4139D219C7CEA00A24053 /* FMDatabase.m */; };
+		89C413A6219C7CEA00A24053 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C413A1219C7CEA00A24053 /* FMDatabasePool.m */; };
+		89C413A7219C7CEA00A24053 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C413A2219C7CEA00A24053 /* FMResultSet.m */; };
+		89DE65DB2185BF7700B9BFE9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 89DE65DA2185BF7700B9BFE9 /* libsqlite3.tbd */; };
+		89DE65F42186194000B9BFE9 /* JMemoAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DE65F32186194000B9BFE9 /* JMemoAddViewController.m */; };
+		89E58B752178E8C700A7409D /* JMemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E58B742178E8C700A7409D /* JMemoViewController.m */; };
+		89E58B7F217F71ED00A7409D /* JMemoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E58B7E217F71ED00A7409D /* JMemoTool.m */; };
+		89E58B82217F73C500A7409D /* JMemoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E58B81217F73C500A7409D /* JMemoData.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		890ED79F2174EAD60001010E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 890ED77E2174EAD50001010E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 890ED7852174EAD50001010E;
+			remoteInfo = JustMemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		890ED7862174EAD50001010E /* JustMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		890ED7892174EAD50001010E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		890ED78A2174EAD50001010E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		890ED78C2174EAD50001010E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		890ED78D2174EAD50001010E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		890ED7902174EAD50001010E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		890ED7922174EAD50001010E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		890ED7952174EAD50001010E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		890ED7972174EAD50001010E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		890ED7982174EAD50001010E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		890ED79E2174EAD60001010E /* JustMemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JustMemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		890ED7A22174EAD60001010E /* JustMemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JustMemoTests.m; sourceTree = "<group>"; };
+		890ED7A42174EAD60001010E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89C4135B218F02E400A24053 /* JMemoEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMemoEditViewController.h; sourceTree = "<group>"; };
+		89C4135C218F02E400A24053 /* JMemoEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMemoEditViewController.m; sourceTree = "<group>"; };
+		89C413622199DBBE00A24053 /* FinishTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinishTool.h; sourceTree = "<group>"; };
+		89C413632199DBBE00A24053 /* FinishTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinishTool.m; sourceTree = "<group>"; };
+		89C413652199DBD000A24053 /* FinishData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinishData.h; sourceTree = "<group>"; };
+		89C413662199DBD000A24053 /* FinishData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinishData.m; sourceTree = "<group>"; };
+		89C41393219C7CDC00A24053 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
+		89C41395219C7CE500A24053 /* JMemo.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = JMemo.sqlite; sourceTree = "<group>"; };
+		89C41398219C7CEA00A24053 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		89C41399219C7CEA00A24053 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		89C4139A219C7CEA00A24053 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		89C4139B219C7CEA00A24053 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		89C4139C219C7CEA00A24053 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		89C4139D219C7CEA00A24053 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		89C4139E219C7CEA00A24053 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		89C4139F219C7CEA00A24053 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		89C413A0219C7CEA00A24053 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		89C413A1219C7CEA00A24053 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		89C413A2219C7CEA00A24053 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		89DE65DA2185BF7700B9BFE9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		89DE65F22186194000B9BFE9 /* JMemoAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMemoAddViewController.h; sourceTree = "<group>"; };
+		89DE65F32186194000B9BFE9 /* JMemoAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMemoAddViewController.m; sourceTree = "<group>"; };
+		89E58B732178E8C700A7409D /* JMemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMemoViewController.h; sourceTree = "<group>"; };
+		89E58B742178E8C700A7409D /* JMemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMemoViewController.m; sourceTree = "<group>"; };
+		89E58B7D217F71ED00A7409D /* JMemoTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMemoTool.h; sourceTree = "<group>"; };
+		89E58B7E217F71ED00A7409D /* JMemoTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMemoTool.m; sourceTree = "<group>"; };
+		89E58B80217F73C500A7409D /* JMemoData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMemoData.h; sourceTree = "<group>"; };
+		89E58B81217F73C500A7409D /* JMemoData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMemoData.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		890ED7832174EAD50001010E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89DE65DB2185BF7700B9BFE9 /* libsqlite3.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		890ED79B2174EAD60001010E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		890ED77D2174EAD50001010E = {
+			isa = PBXGroup;
+			children = (
+				890ED7882174EAD50001010E /* JustMemo */,
+				890ED7A12174EAD60001010E /* JustMemoTests */,
+				890ED7872174EAD50001010E /* Products */,
+				890ED7C02174EB9E0001010E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		890ED7872174EAD50001010E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				890ED7862174EAD50001010E /* JustMemo.app */,
+				890ED79E2174EAD60001010E /* JustMemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		890ED7882174EAD50001010E /* JustMemo */ = {
+			isa = PBXGroup;
+			children = (
+				89E58B76217CE0E500A7409D /* Source */,
+				89E58B6F2178E82E00A7409D /* Memo */,
+				890ED7C52174EC180001010E /* About */,
+				890ED7C42174EC060001010E /* Finish */,
+				890ED7C32174EBFA0001010E /* Main */,
+				890ED78F2174EAD50001010E /* Main.storyboard */,
+				890ED7922174EAD50001010E /* Assets.xcassets */,
+				890ED7942174EAD50001010E /* LaunchScreen.storyboard */,
+				890ED7972174EAD50001010E /* Info.plist */,
+				890ED7982174EAD50001010E /* main.m */,
+				890ED7BE2174EB810001010E /* other */,
+			);
+			path = JustMemo;
+			sourceTree = "<group>";
+		};
+		890ED7A12174EAD60001010E /* JustMemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				890ED7A22174EAD60001010E /* JustMemoTests.m */,
+				890ED7A42174EAD60001010E /* Info.plist */,
+			);
+			path = JustMemoTests;
+			sourceTree = "<group>";
+		};
+		890ED7BE2174EB810001010E /* other */ = {
+			isa = PBXGroup;
+			children = (
+				89CF7D7E21821A7A00CF22EB /* SQL */,
+				89CF7D7D21821A6900CF22EB /* Lib */,
+			);
+			path = other;
+			sourceTree = "<group>";
+		};
+		890ED7C02174EB9E0001010E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89DE65DA2185BF7700B9BFE9 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		890ED7C32174EBFA0001010E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				890ED78A2174EAD50001010E /* AppDelegate.m */,
+				890ED78C2174EAD50001010E /* ViewController.h */,
+				890ED78D2174EAD50001010E /* ViewController.m */,
+				890ED7892174EAD50001010E /* AppDelegate.h */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		890ED7C42174EC060001010E /* Finish */ = {
+			isa = PBXGroup;
+			children = (
+				89C4135A218F00F900A24053 /* C */,
+				89C41359218F00F200A24053 /* V */,
+				89C41358218F00E600A24053 /* M */,
+			);
+			path = Finish;
+			sourceTree = "<group>";
+		};
+		890ED7C52174EC180001010E /* About */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		89C41358218F00E600A24053 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				89C413622199DBBE00A24053 /* FinishTool.h */,
+				89C413632199DBBE00A24053 /* FinishTool.m */,
+				89C413652199DBD000A24053 /* FinishData.h */,
+				89C413662199DBD000A24053 /* FinishData.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		89C41359218F00F200A24053 /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		89C4135A218F00F900A24053 /* C */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		89C41397219C7CEA00A24053 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				89C41398219C7CEA00A24053 /* FMDatabase.h */,
+				89C41399219C7CEA00A24053 /* FMDatabaseQueue.m */,
+				89C4139A219C7CEA00A24053 /* FMResultSet.h */,
+				89C4139B219C7CEA00A24053 /* FMDatabasePool.h */,
+				89C4139C219C7CEA00A24053 /* FMDatabaseAdditions.m */,
+				89C4139D219C7CEA00A24053 /* FMDatabase.m */,
+				89C4139E219C7CEA00A24053 /* FMDatabaseQueue.h */,
+				89C4139F219C7CEA00A24053 /* FMDB.h */,
+				89C413A0219C7CEA00A24053 /* FMDatabaseAdditions.h */,
+				89C413A1219C7CEA00A24053 /* FMDatabasePool.m */,
+				89C413A2219C7CEA00A24053 /* FMResultSet.m */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
+		89CF7D7D21821A6900CF22EB /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				89C41397219C7CEA00A24053 /* fmdb */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		89CF7D7E21821A7A00CF22EB /* SQL */ = {
+			isa = PBXGroup;
+			children = (
+				89C41395219C7CE500A24053 /* JMemo.sqlite */,
+			);
+			path = SQL;
+			sourceTree = "<group>";
+		};
+		89E58B6F2178E82E00A7409D /* Memo */ = {
+			isa = PBXGroup;
+			children = (
+				89E58B722178E85400A7409D /* C */,
+				89E58B712178E85000A7409D /* V */,
+				89E58B702178E84700A7409D /* M */,
+			);
+			path = Memo;
+			sourceTree = "<group>";
+		};
+		89E58B702178E84700A7409D /* M */ = {
+			isa = PBXGroup;
+			children = (
+				89E58B7D217F71ED00A7409D /* JMemoTool.h */,
+				89E58B7E217F71ED00A7409D /* JMemoTool.m */,
+				89E58B80217F73C500A7409D /* JMemoData.h */,
+				89E58B81217F73C500A7409D /* JMemoData.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		89E58B712178E85000A7409D /* V */ = {
+			isa = PBXGroup;
+			children = (
+				89DE65F22186194000B9BFE9 /* JMemoAddViewController.h */,
+				89DE65F32186194000B9BFE9 /* JMemoAddViewController.m */,
+				89C4135B218F02E400A24053 /* JMemoEditViewController.h */,
+				89C4135C218F02E400A24053 /* JMemoEditViewController.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		89E58B722178E85400A7409D /* C */ = {
+			isa = PBXGroup;
+			children = (
+				89E58B732178E8C700A7409D /* JMemoViewController.h */,
+				89E58B742178E8C700A7409D /* JMemoViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		89E58B76217CE0E500A7409D /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				89C41393219C7CDC00A24053 /* blue.png */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		890ED7852174EAD50001010E /* JustMemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 890ED7A72174EAD60001010E /* Build configuration list for PBXNativeTarget "JustMemo" */;
+			buildPhases = (
+				890ED7822174EAD50001010E /* Sources */,
+				890ED7832174EAD50001010E /* Frameworks */,
+				890ED7842174EAD50001010E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JustMemo;
+			productName = JustMemo;
+			productReference = 890ED7862174EAD50001010E /* JustMemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		890ED79D2174EAD60001010E /* JustMemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 890ED7AA2174EAD60001010E /* Build configuration list for PBXNativeTarget "JustMemoTests" */;
+			buildPhases = (
+				890ED79A2174EAD60001010E /* Sources */,
+				890ED79B2174EAD60001010E /* Frameworks */,
+				890ED79C2174EAD60001010E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				890ED7A02174EAD60001010E /* PBXTargetDependency */,
+			);
+			name = JustMemoTests;
+			productName = JustMemoTests;
+			productReference = 890ED79E2174EAD60001010E /* JustMemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		890ED77E2174EAD50001010E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = StepForward;
+				TargetAttributes = {
+					890ED7852174EAD50001010E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					890ED79D2174EAD60001010E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 890ED7852174EAD50001010E;
+					};
+				};
+			};
+			buildConfigurationList = 890ED7812174EAD50001010E /* Build configuration list for PBXProject "JustMemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 890ED77D2174EAD50001010E;
+			productRefGroup = 890ED7872174EAD50001010E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				890ED7852174EAD50001010E /* JustMemo */,
+				890ED79D2174EAD60001010E /* JustMemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		890ED7842174EAD50001010E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				890ED7962174EAD50001010E /* LaunchScreen.storyboard in Resources */,
+				890ED7932174EAD50001010E /* Assets.xcassets in Resources */,
+				890ED7912174EAD50001010E /* Main.storyboard in Resources */,
+				89C41396219C7CE500A24053 /* JMemo.sqlite in Resources */,
+				89C41394219C7CDC00A24053 /* blue.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		890ED79C2174EAD60001010E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		890ED7822174EAD50001010E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89E58B7F217F71ED00A7409D /* JMemoTool.m in Sources */,
+				89E58B752178E8C700A7409D /* JMemoViewController.m in Sources */,
+				89C413A5219C7CEA00A24053 /* FMDatabase.m in Sources */,
+				89E58B82217F73C500A7409D /* JMemoData.m in Sources */,
+				890ED78E2174EAD50001010E /* ViewController.m in Sources */,
+				89C413642199DBBE00A24053 /* FinishTool.m in Sources */,
+				890ED7992174EAD50001010E /* main.m in Sources */,
+				89C413672199DBD000A24053 /* FinishData.m in Sources */,
+				890ED78B2174EAD50001010E /* AppDelegate.m in Sources */,
+				89C413A7219C7CEA00A24053 /* FMResultSet.m in Sources */,
+				89C413A3219C7CEA00A24053 /* FMDatabaseQueue.m in Sources */,
+				89C4135D218F02E400A24053 /* JMemoEditViewController.m in Sources */,
+				89C413A6219C7CEA00A24053 /* FMDatabasePool.m in Sources */,
+				89DE65F42186194000B9BFE9 /* JMemoAddViewController.m in Sources */,
+				89C413A4219C7CEA00A24053 /* FMDatabaseAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		890ED79A2174EAD60001010E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				890ED7A32174EAD60001010E /* JustMemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		890ED7A02174EAD60001010E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 890ED7852174EAD50001010E /* JustMemo */;
+			targetProxy = 890ED79F2174EAD60001010E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		890ED78F2174EAD50001010E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				890ED7902174EAD50001010E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		890ED7942174EAD50001010E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				890ED7952174EAD50001010E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		890ED7A52174EAD60001010E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Debug;
+		};
+		890ED7A62174EAD60001010E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Release;
+		};
+		890ED7A82174EAD60001010E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = THWK2K3MN7;
+				INFOPLIST_FILE = JustMemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = StepForward.JustMemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Debug;
+		};
+		890ED7A92174EAD60001010E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = THWK2K3MN7;
+				INFOPLIST_FILE = JustMemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = StepForward.JustMemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Release;
+		};
+		890ED7AB2174EAD60001010E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JustMemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = StepForward.JustMemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JustMemo.app/JustMemo";
+			};
+			name = Debug;
+		};
+		890ED7AC2174EAD60001010E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JustMemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = StepForward.JustMemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JustMemo.app/JustMemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		890ED7812174EAD50001010E /* Build configuration list for PBXProject "JustMemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				890ED7A52174EAD60001010E /* Debug */,
+				890ED7A62174EAD60001010E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		890ED7A72174EAD60001010E /* Build configuration list for PBXNativeTarget "JustMemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				890ED7A82174EAD60001010E /* Debug */,
+				890ED7A92174EAD60001010E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		890ED7AA2174EAD60001010E /* Build configuration list for PBXNativeTarget "JustMemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				890ED7AB2174EAD60001010E /* Debug */,
+				890ED7AC2174EAD60001010E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 890ED77E2174EAD50001010E /* Project object */;
+}
