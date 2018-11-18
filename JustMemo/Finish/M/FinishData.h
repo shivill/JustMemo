@@ -18,6 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSString *finTime;
 @property (nonatomic,assign) int level;
 
+-(NSMutableArray *)queryWithData;
+-(void)insertData:(FinishData *)addNote;
+- (void)deleteData:(int)ids;
+- (void)updateData:(FinishData *)updateNote;
+- (FinishData *)queryOneNote:(int)ids;
 
 @end
 

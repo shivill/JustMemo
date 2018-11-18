@@ -24,6 +24,8 @@
 		89C413A5219C7CEA00A24053 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C4139D219C7CEA00A24053 /* FMDatabase.m */; };
 		89C413A6219C7CEA00A24053 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C413A1219C7CEA00A24053 /* FMDatabasePool.m */; };
 		89C413A7219C7CEA00A24053 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C413A2219C7CEA00A24053 /* FMResultSet.m */; };
+		89C413AA21A14BF600A24053 /* FinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C413A921A14BF600A24053 /* FinishViewController.m */; };
+		89C413AD21A16CF500A24053 /* FinishDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C413AC21A16CF500A24053 /* FinishDetailViewController.m */; };
 		89DE65DB2185BF7700B9BFE9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 89DE65DA2185BF7700B9BFE9 /* libsqlite3.tbd */; };
 		89DE65F42186194000B9BFE9 /* JMemoAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DE65F32186194000B9BFE9 /* JMemoAddViewController.m */; };
 		89E58B752178E8C700A7409D /* JMemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E58B742178E8C700A7409D /* JMemoViewController.m */; };
@@ -74,6 +76,11 @@
 		89C413A0219C7CEA00A24053 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
 		89C413A1219C7CEA00A24053 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
 		89C413A2219C7CEA00A24053 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		89C413A821A14BF600A24053 /* FinishViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinishViewController.h; sourceTree = "<group>"; };
+		89C413A921A14BF600A24053 /* FinishViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinishViewController.m; sourceTree = "<group>"; };
+		89C413AB21A16CF500A24053 /* FinishDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinishDetailViewController.h; sourceTree = "<group>"; };
+		89C413AC21A16CF500A24053 /* FinishDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinishDetailViewController.m; sourceTree = "<group>"; };
+		89C413B021A1C84900A24053 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		89DE65DA2185BF7700B9BFE9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		89DE65F22186194000B9BFE9 /* JMemoAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMemoAddViewController.h; sourceTree = "<group>"; };
 		89DE65F32186194000B9BFE9 /* JMemoAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMemoAddViewController.m; sourceTree = "<group>"; };
@@ -153,6 +160,7 @@
 		890ED7BE2174EB810001010E /* other */ = {
 			isa = PBXGroup;
 			children = (
+				89C413AE21A1C80D00A24053 /* SupportingFiles */,
 				89CF7D7E21821A7A00CF22EB /* SQL */,
 				89CF7D7D21821A6900CF22EB /* Lib */,
 			);
@@ -209,6 +217,8 @@
 		89C41359218F00F200A24053 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				89C413AB21A16CF500A24053 /* FinishDetailViewController.h */,
+				89C413AC21A16CF500A24053 /* FinishDetailViewController.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -216,6 +226,8 @@
 		89C4135A218F00F900A24053 /* C */ = {
 			isa = PBXGroup;
 			children = (
+				89C413A821A14BF600A24053 /* FinishViewController.h */,
+				89C413A921A14BF600A24053 /* FinishViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -236,6 +248,14 @@
 				89C413A2219C7CEA00A24053 /* FMResultSet.m */,
 			);
 			path = fmdb;
+			sourceTree = "<group>";
+		};
+		89C413AE21A1C80D00A24053 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				89C413B021A1C84900A24053 /* PrefixHeader.pch */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		89CF7D7D21821A6900CF22EB /* Lib */ = {
@@ -408,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89E58B7F217F71ED00A7409D /* JMemoTool.m in Sources */,
+				89C413AA21A14BF600A24053 /* FinishViewController.m in Sources */,
 				89E58B752178E8C700A7409D /* JMemoViewController.m in Sources */,
 				89C413A5219C7CEA00A24053 /* FMDatabase.m in Sources */,
 				89E58B82217F73C500A7409D /* JMemoData.m in Sources */,
@@ -421,6 +442,7 @@
 				89C4135D218F02E400A24053 /* JMemoEditViewController.m in Sources */,
 				89C413A6219C7CEA00A24053 /* FMDatabasePool.m in Sources */,
 				89DE65F42186194000B9BFE9 /* JMemoAddViewController.m in Sources */,
+				89C413AD21A16CF500A24053 /* FinishDetailViewController.m in Sources */,
 				89C413A4219C7CEA00A24053 /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +525,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = JustMemo/other/SupportingFiles/PrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -559,6 +583,8 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = JustMemo/other/SupportingFiles/PrefixHeader.pch;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -580,6 +606,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = THWK2K3MN7;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = JustMemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
@@ -596,6 +623,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = THWK2K3MN7;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = JustMemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;

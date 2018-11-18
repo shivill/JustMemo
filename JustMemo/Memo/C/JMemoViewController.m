@@ -134,8 +134,15 @@
     
     self.jMemoData = self.queryData[[indexPath row]];
     
+    cell.textLabel.font = [UIFont systemFontOfSize:SIZE_FOR_MAIN_TEXT];
     cell.textLabel.text = self.jMemoData.data;
     
+    //for time label in cell
+    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 70, 200, 30)];
+    timeLabel.text = self.jMemoData.setTime;
+    timeLabel.textColor = [UIColor grayColor];
+    //timeLabel.tag = indexPath.row;
+    [cell addSubview:timeLabel];
     
     return cell;
 }
@@ -144,8 +151,24 @@
 {
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
+        //get memo data which is selected
         self.jMemoData = [self.queryData objectAtIndex:[indexPath row]];
         
+        //get current time with date-formatter
+        NSDateFormatter *nsDateFmt = [[NSDateFormatter alloc] init];
+        [nsDateFmt setDateFormat:@"YYYY/MM/dd  HH:mm:ss"];
+        
+        NSDate *editTime = [[NSDate alloc] init];
+        
+        NSString *currentTime = [nsDateFmt stringFromDate:editTime];
+        
+        //move this memo to finish view
+        self.finishData.setTime = self.jMemoData.setTime;
+        self.finishData.finTime = currentTime;
+        self.finishData.data    = self.jMemoData.data;
+        [self.finishData insertData:self.finishData];
+        
+        //delete this memo in jmemodata
         [self.jMemoData deleteData:self.jMemoData.ids];
         
         self.queryData = [self.jMemoData queryWithData];
