@@ -141,8 +141,20 @@
     UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 70, 200, 30)];
     timeLabel.text = self.jMemoData.setTime;
     timeLabel.textColor = [UIColor grayColor];
+    
     //timeLabel.tag = indexPath.row;
     [cell addSubview:timeLabel];
+    
+    //for finish button in cell
+    UIButton *finishBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 60, 35, 30, 30)];
+    finishBtn.backgroundColor = [UIColor blueColor];
+    finishBtn.tag = self.jMemoData.ids;
+    
+    [finishBtn addTarget:self action:@selector(finishThisMemo:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [cell addSubview:finishBtn];
+
     
     return cell;
 }
@@ -154,19 +166,7 @@
         //get memo data which is selected
         self.jMemoData = [self.queryData objectAtIndex:[indexPath row]];
         
-        //get current time with date-formatter
-        NSDateFormatter *nsDateFmt = [[NSDateFormatter alloc] init];
-        [nsDateFmt setDateFormat:@"YYYY/MM/dd  HH:mm:ss"];
-        
-        NSDate *editTime = [[NSDate alloc] init];
-        
-        NSString *currentTime = [nsDateFmt stringFromDate:editTime];
-        
-        //move this memo to finish view
-        self.finishData.setTime = self.jMemoData.setTime;
-        self.finishData.finTime = currentTime;
-        self.finishData.data    = self.jMemoData.data;
-        [self.finishData insertData:self.finishData];
+
         
         //delete this memo in jmemodata
         [self.jMemoData deleteData:self.jMemoData.ids];
@@ -198,6 +198,36 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 100;
+}
+
+#pragma mark - selector for finish-button
+
+- (void)finishThisMemo:(UIButton *)btn
+{
+    self.jMemoData = [self.jMemoData queryOneNote:(int)btn.tag];
+    //get current time with date-formatter
+    NSDateFormatter *nsDateFmt = [[NSDateFormatter alloc] init];
+    [nsDateFmt setDateFormat:@"YYYY/MM/dd  HH:mm:ss"];
+    
+    NSDate *editTime = [[NSDate alloc] init];
+    
+    NSString *currentTime = [nsDateFmt stringFromDate:editTime];
+    
+    //move this memo to finish view
+    self.finishData.setTime = self.jMemoData.setTime;
+    self.finishData.finTime = currentTime;
+    self.finishData.data    = self.jMemoData.data;
+    [self.finishData insertData:self.finishData];
+    
+    //delete this memo in jmemodata
+    [self.jMemoData deleteData:self.jMemoData.ids];
+    
+    self.queryData = [self.jMemoData queryWithData];
+    
+    
+    //to delete this memo in view. refresh memoView
+    [self.memoView reloadData];
+
 }
 
 @end
