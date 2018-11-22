@@ -86,15 +86,33 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //query for data first
+    self.finishData = self.queryData[([self.queryData count] - 1 -[indexPath row])];
+    
+    //for time label in cell
+    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 70, 200, 30)];
+    timeLabel.text = self.finishData.finTime;
+    timeLabel.textColor = [UIColor grayColor];
+    
     static NSString *finishID = @"finishID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:finishID];
     if(cell == nil)
     {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:finishID];
     }
-    
-    self.finishData = self.queryData[[indexPath row]];
-    
+    else
+    {
+        //remove contents of this cell,in order to avoid overlapping of subviews
+        while ([cell.contentView.subviews lastObject] != nil) {
+            [(UIView*)[cell.contentView.subviews lastObject] removeFromSuperview];
+        }
+    }
+
+    //to add time label
+    [cell.contentView addSubview:timeLabel];
+
+
+    //for cell main text label
     cell.textLabel.font = [UIFont systemFontOfSize:SIZE_FOR_MAIN_TEXT];
     cell.textLabel.text = self.finishData.data;
     
@@ -125,7 +143,7 @@
 
     FinishDetailViewController *editView= [[FinishDetailViewController alloc] init];
 
-    self.finishData = self.queryData[[indexPath row]];
+    self.finishData = self.queryData[([self.queryData count] - 1 -[indexPath row])];
 
     self.hidesBottomBarWhenPushed = YES;
 

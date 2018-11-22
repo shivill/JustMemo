@@ -125,25 +125,37 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *MemoID = @"MemoID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MemoID];
-    if(cell == nil)
-    {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MemoID];
-    }
-    
+    //query for data first
     self.jMemoData = self.queryData[[indexPath row]];
-    
-    cell.textLabel.font = [UIFont systemFontOfSize:SIZE_FOR_MAIN_TEXT];
-    cell.textLabel.text = self.jMemoData.data;
     
     //for time label in cell
     UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 70, 200, 30)];
     timeLabel.text = self.jMemoData.setTime;
     timeLabel.textColor = [UIColor grayColor];
     
+    static NSString *MemoID = @"MemoID";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MemoID];
+    
+    
+    if(cell == nil)
+    {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MemoID];
+    }
+    else
+    {
+        //remove contents of this cell,in order to avoid overlapping of subviews
+        while ([cell.contentView.subviews lastObject] != nil) {
+            [(UIView*)[cell.contentView.subviews lastObject] removeFromSuperview];
+        }
+    }
+    
     //timeLabel.tag = indexPath.row;
-    [cell addSubview:timeLabel];
+    [cell.contentView addSubview:timeLabel];
+
+    //for cell main text label
+    cell.textLabel.font = [UIFont systemFontOfSize:SIZE_FOR_MAIN_TEXT];
+    cell.textLabel.text = self.jMemoData.data;
+
     
     //for finish button in cell
     UIButton *finishBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 60, 35, 30, 30)];
@@ -153,7 +165,7 @@
     [finishBtn addTarget:self action:@selector(finishThisMemo:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    [cell addSubview:finishBtn];
+    [cell.contentView addSubview:finishBtn];
 
     
     return cell;
@@ -192,6 +204,7 @@
 
     [self.navigationController pushViewController:editView animated:YES];
     self.hidesBottomBarWhenPushed = NO;
+
 
 }
 
