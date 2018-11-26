@@ -15,6 +15,12 @@
 @property (nonatomic,weak) UITableView *finishView;
 @property (nonatomic,weak) UIButton *addButton;
 
+//for editing mode
+@property (nonatomic,strong) NSMutableArray *deleteArray;
+@property (nonatomic,strong) UIBarButtonItem *editBtn;
+@property (nonatomic,strong) UIBarButtonItem *delBtn;
+@property (nonatomic,strong) UIBarButtonItem *cancleBtn;
+
 //database data
 @property (nonatomic,strong) FinishData *finishData;
 //array for data
@@ -53,18 +59,36 @@
     return _queryData;
 }
 
+- (NSMutableArray *)deleteArray
+{
+    if(_deleteArray == nil)
+    {
+        _deleteArray = [NSMutableArray array];
+    }
+    return _deleteArray;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UITableView *finishView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width,self.view.frame.size.height -10 ) style:UITableViewStylePlain];
+    
+    //init tableview
+    UITableView *finishView = [[UITableView alloc]initWithFrame:CGRectMake(0, HIGHT_ABOVE_TABLEVIEW,self.view.frame.size.width,self.view.frame.size.height -10-HIGHT_ABOVE_TABLEVIEW ) style:UITableViewStylePlain];
     finishView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     finishView.separatorColor = [UIColor grayColor];
     finishView.delegate = self;
     finishView.dataSource = self;
+    finishView.allowsMultipleSelectionDuringEditing = YES;
     
     self.finishView = finishView;
     
     [self.view addSubview:finishView];
     
+    //init uibarbuttonitem with eidt/delete button
+    self.editBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editTableView:)];
+    self.delBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteTableView:)];
+    self.cancleBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancleEdit:)];
+    self.navigationItem.rightBarButtonItem = self.editBtn;
+
     self.queryData = [self.finishData queryWithData];
     
     
@@ -76,9 +100,47 @@
     [self.finishView reloadData];
 }
 
+#pragma mark - selector for edit barbutton
+- (void)editTableView:(id)sender
+{
+    [self.finishView setEditing:!self.finishView.isEditing animated:YES];
+    
+    self.navigationItem.leftBarButtonItem  = self.cancleBtn;
+    self.navigationItem.rightBarButtonItem = self.delBtn;
 
-#pragma mark - method for tableview
+}
 
+#pragma mark - selector for delete barbutton
+- (void)deleteTableView:(id)sender
+{
+
+    //[self.queryData removeObjectsInArray:self.deleteArray];
+    for(FinishData *finData in self.deleteArray)
+    {
+        [self.finishData deleteData:finData.ids];
+    }
+    
+    [self.finishView setEditing:!self.finishView.isEditing animated:YES];
+    
+    self.navigationItem.leftBarButtonItem  = nil;
+    self.navigationItem.rightBarButtonItem = self.editBtn;
+
+    self.queryData = [self.finishData queryWithData];
+    
+    [self.finishView reloadData];
+}
+#pragma mark - selector for cancle barbutton
+- (void)cancleEdit:(id)sender
+{
+    [self.finishView setEditing:!self.finishView.isEditing animated:YES];
+    
+    self.navigationItem.leftBarButtonItem  = nil;
+    self.navigationItem.rightBarButtonItem = self.editBtn;
+
+}
+
+
+#pragma mark - methods for tableview
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.queryData count];
@@ -139,18 +201,34 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-    FinishDetailViewController *editView= [[FinishDetailViewController alloc] init];
-
     self.finishData = self.queryData[([self.queryData count] - 1 -[indexPath row])];
 
-    self.hidesBottomBarWhenPushed = YES;
+    if(self.finishView.isEditing == NO)
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    editView.ids = self.finishData.ids;
+        FinishDetailViewController *editView= [[FinishDetailViewController alloc] init];
 
-    [self.navigationController pushViewController:editView animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
+        self.hidesBottomBarWhenPushed = YES;
+
+        editView.ids = self.finishData.ids;
+
+        [self.navigationController pushViewController:editView animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
+    }
+    else if(self.finishView.isEditing == YES)
+    {
+        [self.deleteArray addObject:self.finishData];
+    }
+    
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(self.finishView.isEditing == YES)
+    {
+        [self.deleteArray removeObject:self.finishData];
+    }
     
 }
 

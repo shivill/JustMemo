@@ -63,7 +63,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UITableView *memoView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width,self.view.frame.size.height -10 ) style:UITableViewStylePlain];
+    UITableView *memoView = [[UITableView alloc]initWithFrame:CGRectMake(0, HIGHT_ABOVE_TABLEVIEW,self.view.frame.size.width,self.view.frame.size.height -10-HIGHT_ABOVE_TABLEVIEW ) style:UITableViewStylePlain];
     memoView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     memoView.separatorColor = [UIColor grayColor];
     memoView.delegate = self;
