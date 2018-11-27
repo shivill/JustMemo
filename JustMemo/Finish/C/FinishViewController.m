@@ -103,7 +103,7 @@
 #pragma mark - selector for edit barbutton
 - (void)editTableView:(id)sender
 {
-    [self.finishView setEditing:!self.finishView.isEditing animated:YES];
+    [self.finishView setEditing:YES animated:YES];
     
     self.navigationItem.leftBarButtonItem  = self.cancleBtn;
     self.navigationItem.rightBarButtonItem = self.delBtn;
@@ -120,7 +120,7 @@
         [self.finishData deleteData:finData.ids];
     }
     
-    [self.finishView setEditing:!self.finishView.isEditing animated:YES];
+    [self.finishView setEditing:NO animated:YES];
     
     self.navigationItem.leftBarButtonItem  = nil;
     self.navigationItem.rightBarButtonItem = self.editBtn;
@@ -132,7 +132,7 @@
 #pragma mark - selector for cancle barbutton
 - (void)cancleEdit:(id)sender
 {
-    [self.finishView setEditing:!self.finishView.isEditing animated:YES];
+    [self.finishView setEditing:NO animated:YES];
     
     self.navigationItem.leftBarButtonItem  = nil;
     self.navigationItem.rightBarButtonItem = self.editBtn;
@@ -197,6 +197,18 @@
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
     }
+}
+
+//remove edit-button while sliding to left
+-(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.navigationItem.rightBarButtonItem = nil;
+}
+
+//add edit-button when canceled
+-(void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.navigationItem.rightBarButtonItem = self.editBtn;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
