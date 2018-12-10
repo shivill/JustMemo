@@ -136,7 +136,7 @@
     
     self.navigationItem.leftBarButtonItem  = nil;
     self.navigationItem.rightBarButtonItem = self.editBtn;
-
+    self.deleteArray = nil;
 }
 
 

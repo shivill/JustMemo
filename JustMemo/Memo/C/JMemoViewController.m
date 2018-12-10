@@ -18,6 +18,14 @@
 @property (nonatomic,weak) UITableView *memoView;
 @property (nonatomic,weak) UIButton *addButton;
 
+//for editing mode
+@property (nonatomic,strong) NSMutableArray *deleteArray;
+@property (nonatomic,strong) UIBarButtonItem *editBtn;
+@property (nonatomic,strong) UIBarButtonItem *delBtn;
+@property (nonatomic,strong) UIBarButtonItem *cancleBtn;
+
+
+
 //database data
 @property (nonatomic,strong) JMemoData *jMemoData;
 @property (nonatomic,strong) FinishData *finishData;
@@ -61,6 +69,15 @@
     return _queryData;
 }
 
+- (NSMutableArray *)deleteArray
+{
+    if(_deleteArray == nil)
+    {
+        _deleteArray = [NSMutableArray array];
+    }
+    return _deleteArray;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     UITableView *memoView = [[UITableView alloc]initWithFrame:CGRectMake(0, HIGHT_ABOVE_TABLEVIEW,self.view.frame.size.width,self.view.frame.size.height -10-HIGHT_ABOVE_TABLEVIEW ) style:UITableViewStylePlain];
@@ -68,6 +85,7 @@
     memoView.separatorColor = [UIColor grayColor];
     memoView.delegate = self;
     memoView.dataSource = self;
+    memoView.allowsMultipleSelectionDuringEditing = YES;
     
     self.memoView = memoView;
     
@@ -79,7 +97,7 @@
     self.addButton = addButton;
     [self.view addSubview:addButton];
     self.queryData = [self.jMemoData queryWithData];
-
+    
     //for debug  to get database localtion of sandbox
 //    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 //
@@ -87,7 +105,12 @@
 //    NSLog(@"%@",strDocDir);
     
     
-    
+    //init uibarbuttonitem with eidt/delete button
+    self.editBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editTableView:)];
+    self.delBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteTableView:)];
+    self.cancleBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancleEdit:)];
+    self.navigationItem.rightBarButtonItem = self.editBtn;
+
     
 
     
@@ -99,6 +122,45 @@
     [self.memoView reloadData];
 }
 
+#pragma mark - selector for edit barbutton
+- (void)editTableView:(id)sender
+{
+    [self.memoView setEditing:YES animated:YES];
+    
+    self.navigationItem.leftBarButtonItem  = self.cancleBtn;
+    self.navigationItem.rightBarButtonItem = self.delBtn;
+    
+}
+
+#pragma mark - selector for delete barbutton
+- (void)deleteTableView:(id)sender
+{
+    
+    //[self.queryData removeObjectsInArray:self.deleteArray];
+    for(JMemoData *finData in self.deleteArray)
+    {
+        [self.jMemoData deleteData:finData.ids];
+    }
+    
+    [self.memoView setEditing:NO animated:YES];
+    
+    self.navigationItem.leftBarButtonItem  = nil;
+    self.navigationItem.rightBarButtonItem = self.editBtn;
+    
+    self.queryData = [self.jMemoData queryWithData];
+    
+    [self.memoView reloadData];
+}
+#pragma mark - selector for cancle barbutton
+- (void)cancleEdit:(id)sender
+{
+    [self.memoView setEditing:NO animated:YES];
+    
+    self.navigationItem.leftBarButtonItem  = nil;
+    self.navigationItem.rightBarButtonItem = self.editBtn;
+    self.deleteArray = nil;
+    
+}
 
 
 - (void)addOneMemo:(UIImageView *)add
@@ -126,7 +188,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //query for data first
-    self.jMemoData = self.queryData[[indexPath row]];
+    self.jMemoData = self.queryData[([self.queryData count] - 1 -[indexPath row])];
     
     //for time label in cell
     UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 70, 200, 30)];
@@ -189,23 +251,50 @@
     }
 }
 
+//remove edit-button while sliding to left
+-(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.navigationItem.rightBarButtonItem = nil;
+}
+
+//add edit-button when canceled
+-(void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.navigationItem.rightBarButtonItem = self.editBtn;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    JMemoEditViewController *editView= [[JMemoEditViewController alloc] init];
-    
-    self.jMemoData = self.queryData[[indexPath row]];
-    
-    self.hidesBottomBarWhenPushed = YES;
-    
-    editView.ids = self.jMemoData.ids;
-    editView.backDelegate = self;
+    self.jMemoData = self.queryData[([self.queryData count] - 1 -[indexPath row])];
 
-    [self.navigationController pushViewController:editView animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
+    if(self.memoView.isEditing == NO)
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+        JMemoEditViewController *editView= [[JMemoEditViewController alloc] init];
+    
+    
+        self.hidesBottomBarWhenPushed = YES;
+    
+        editView.ids = self.jMemoData.ids;
+        editView.backDelegate = self;
+        
+        [self.navigationController pushViewController:editView animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
+    }
+    else if(self.memoView.isEditing == YES)
+    {
+        [self.deleteArray addObject:self.jMemoData];
+    }
 
+}
 
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(self.memoView.isEditing == YES)
+    {
+        [self.deleteArray removeObject:self.jMemoData];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
