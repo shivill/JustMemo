@@ -10,10 +10,11 @@
 #import "JMemoData.h"
 #import "JMemoAddViewController.h"
 #import "JMemoEditViewController.h"
+#import "JMemoResultViewController.h"
 
 #import "FinishData.h"
 
-@interface JMemoViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,BackDelegate>
+@interface JMemoViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate,UISearchControllerDelegate,UISearchResultsUpdating,BackDelegate,ResultDelegate>
 
 @property (nonatomic,weak) UITableView *memoView;
 @property (nonatomic,weak) UIButton *addButton;
@@ -24,22 +25,47 @@
 @property (nonatomic,strong) UIBarButtonItem *delBtn;
 @property (nonatomic,strong) UIBarButtonItem *cancleBtn;
 
+//for uisearchbar
+@property (nonatomic,strong) UISearchController *searchController;
+@property (nonatomic,strong) JMemoResultViewController *resultVC;
+
+
+@property (nonatomic) CGPoint startPoint;
+@property (nonatomic,strong) UITableView *searchTable;
+
 
 
 //database data
 @property (nonatomic,strong) JMemoData *jMemoData;
 @property (nonatomic,strong) FinishData *finishData;
+@property (nonatomic,strong) JMemoData *searchData;
 //array for data
 @property (nonatomic,strong) NSMutableArray *queryData;
+@property (nonatomic,strong) NSMutableArray *searchResult;
 
 
 @end
 
 @implementation JMemoViewController
 
+#pragma mark - method for returndelegate
 - (void)returnToPreView
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+#pragma mark - method for resultdelegate
+-(void)pushToEditView:(JMemoData *)jMemoData
+{
+    NSLog(@"on delegate");
+    JMemoEditViewController *editView= [[JMemoEditViewController alloc] init];
+    
+    self.hidesBottomBarWhenPushed = YES;
+    
+    editView.jMemoData = jMemoData;
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController pushViewController:editView animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+    NSLog(@"delegate over");
 }
 
 - (JMemoData *)jMemoData
@@ -80,6 +106,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"now navc = %@",self.navigationController);
+    self.startPoint = CGPointMake(0, -64); //important
+    //for main memo view
     UITableView *memoView = [[UITableView alloc]initWithFrame:CGRectMake(0, HIGHT_ABOVE_TABLEVIEW,self.view.frame.size.width,self.view.frame.size.height -10-HIGHT_ABOVE_TABLEVIEW ) style:UITableViewStylePlain];
     memoView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     memoView.separatorColor = [UIColor grayColor];
@@ -91,6 +120,7 @@
     
     [self.view addSubview:memoView];
 
+    //for add button
     UIButton *addButton = [[UIButton alloc]initWithFrame:CGRectMake(0.5*(self.view.frame.size.width-48), self.view.frame.size.height-100, 48, 48)];
     [addButton setImage:[UIImage imageNamed:@"blue.png"] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(addOneMemo:) forControlEvents:UIControlEventTouchUpInside];
@@ -111,8 +141,8 @@
     self.cancleBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancleEdit:)];
     self.navigationItem.rightBarButtonItem = self.editBtn;
 
-    
 
+    [self initSearchView];
     
 }
 
@@ -120,6 +150,110 @@
 {
     self.queryData = [self.jMemoData queryWithData];
     [self.memoView reloadData];
+}
+
+#pragma mark - code for search view
+
+- (void)initSearchView
+{
+//    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+////    searchBar.delegate = self;
+//    searchBar.placeholder = @"Type Keyword Here......";
+//
+//    self.searchBar = searchBar;
+//
+//    //[self.memoView addSubview:searchBar];
+    //for searchController & its searchbar inside
+    self.resultVC = [[JMemoResultViewController alloc] init];
+    self.resultVC.resultDelegate = self;
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.resultVC];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.delegate = self;
+    
+    self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    self.searchController.searchBar.placeholder = @"Type here...";
+    self.searchController.searchBar.delegate = self;
+    self.searchController.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.searchController.searchBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 50);
+    
+    //解决：退出时搜索框依然存在的问题
+    self.definesPresentationContext = YES;
+    
+    [self unloadSearchView];
+}
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+    NSLog(@"update result");
+    
+    //NSMutableArray *sourceData = [NSMutableArray array];
+
+    
+    
+    NSString *searchString = searchController.searchBar.text;
+    // 谓词
+    /**
+     1.BEGINSWITH ： 搜索结果的字符串是以搜索框里的字符开头的
+     2.ENDSWITH   ： 搜索结果的字符串是以搜索框里的字符结尾的
+     3.CONTAINS   ： 搜索结果的字符串包含搜索框里的字符
+     
+     [c]不区分大小写[d]不区分发音符号即没有重音符号[cd]既不区分大小写，也不区分发音符号。
+     
+     */
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"data CONTAINS [CD] %@",searchString];
+    
+    //if there are words in the searchbar,searching with these words
+    //else return the origin database result;
+    if(_searchResult != nil && searchString.length > 0)
+    {
+        //clean search result for next search
+        [_searchResult removeAllObjects];
+        _searchResult = [NSMutableArray arrayWithArray:[self.queryData filteredArrayUsingPredicate:predicate]];
+        //_searchResult = [NSMutableArray arrayWithArray:self.queryData];
+        NSLog(@"search now result num= %lu",(unsigned long)_searchResult.count);
+
+    }
+    else
+    {
+        _searchResult = [NSMutableArray arrayWithArray:self.queryData];
+        NSLog(@"return normal");
+    }
+    
+    self.resultVC.searchResult = _searchResult;
+    
+}
+
+- (void)loadSearchView
+{
+    self.memoView.tableHeaderView = self.searchController.searchBar;
+}
+
+- (void)unloadSearchView
+{
+    self.memoView.tableHeaderView = nil;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat distance = scrollView.contentOffset.y - self.startPoint.y;
+    if(fabs(distance) >= 10)
+    {
+
+        if(self.memoView.tableHeaderView != nil && distance>0 && self.startPoint.y >=-64)
+        {
+            [self unloadSearchView];
+        }
+        //else if(self.memoView.tableHeaderView == nil && distance<0 && scrollView.contentOffset.y <=-150)//self.startPoint.y <= -64 )
+        else if(self.memoView.tableHeaderView == nil && distance<0 && self.startPoint.y <= -64 )
+        {
+            [self loadSearchView];
+        }
+    }
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    self.startPoint = scrollView.contentOffset;
 }
 
 #pragma mark - selector for edit barbutton
@@ -276,9 +410,8 @@
     
         self.hidesBottomBarWhenPushed = YES;
     
-        editView.ids = self.jMemoData.ids;
+        editView.jMemoData = self.jMemoData;
         editView.backDelegate = self;
-        
         [self.navigationController pushViewController:editView animated:YES];
         self.hidesBottomBarWhenPushed = NO;
     }

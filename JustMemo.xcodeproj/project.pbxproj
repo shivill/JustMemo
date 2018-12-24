@@ -31,6 +31,7 @@
 		89E58B752178E8C700A7409D /* JMemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E58B742178E8C700A7409D /* JMemoViewController.m */; };
 		89E58B7F217F71ED00A7409D /* JMemoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E58B7E217F71ED00A7409D /* JMemoTool.m */; };
 		89E58B82217F73C500A7409D /* JMemoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E58B81217F73C500A7409D /* JMemoData.m */; };
+		89FB758E21C801AB005097C3 /* JMemoResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FB758D21C801AB005097C3 /* JMemoResultViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,8 @@
 		89E58B7E217F71ED00A7409D /* JMemoTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMemoTool.m; sourceTree = "<group>"; };
 		89E58B80217F73C500A7409D /* JMemoData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMemoData.h; sourceTree = "<group>"; };
 		89E58B81217F73C500A7409D /* JMemoData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMemoData.m; sourceTree = "<group>"; };
+		89FB758C21C801AB005097C3 /* JMemoResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMemoResultViewController.h; sourceTree = "<group>"; };
+		89FB758D21C801AB005097C3 /* JMemoResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMemoResultViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +305,8 @@
 				89DE65F32186194000B9BFE9 /* JMemoAddViewController.m */,
 				89C4135B218F02E400A24053 /* JMemoEditViewController.h */,
 				89C4135C218F02E400A24053 /* JMemoEditViewController.m */,
+				89FB758C21C801AB005097C3 /* JMemoResultViewController.h */,
+				89FB758D21C801AB005097C3 /* JMemoResultViewController.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -431,6 +436,7 @@
 				89C413AA21A14BF600A24053 /* FinishViewController.m in Sources */,
 				89E58B752178E8C700A7409D /* JMemoViewController.m in Sources */,
 				89C413A5219C7CEA00A24053 /* FMDatabase.m in Sources */,
+				89FB758E21C801AB005097C3 /* JMemoResultViewController.m in Sources */,
 				89E58B82217F73C500A7409D /* JMemoData.m in Sources */,
 				890ED78E2174EAD50001010E /* ViewController.m in Sources */,
 				89C413642199DBBE00A24053 /* FinishTool.m in Sources */,

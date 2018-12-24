@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JMemoData.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface JMemoEditViewController : UIViewController
-@property (nonatomic,assign) int ids;
+@property (nonatomic,strong) JMemoData *jMemoData;
 @property (nonatomic,weak) id <BackDelegate> backDelegate;
 @end
 

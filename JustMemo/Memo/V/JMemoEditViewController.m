@@ -7,12 +7,10 @@
 //
 
 #import "JMemoEditViewController.h"
-#import "JMemoData.h"
 
 @interface JMemoEditViewController ()<UITextViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic,weak) UITextView *textView;
-@property (nonatomic,strong) JMemoData *jMemoData;
 @property (nonatomic,strong) NSMutableArray *queryData;
 @property (nonatomic,strong) NSString *setTime;
 
@@ -20,14 +18,14 @@
 
 @implementation JMemoEditViewController
 
-- (JMemoData *)jMemoData
-{
-    if(_jMemoData == nil)
-    {
-        _jMemoData = [[JMemoData alloc] init];
-    }
-    return _jMemoData;
-}
+//- (JMemoData *)jMemoData
+//{
+//    if(_jMemoData == nil)
+//    {
+//        _jMemoData = [[JMemoData alloc] init];
+//    }
+//    return _jMemoData;
+//}
 
 - (NSMutableArray *)queryData
 {
@@ -49,7 +47,7 @@
     //save button to save memo data
     [self saveBtn];
     
-    [self preLoadData];
+//    [self preLoadData];
     
     //add textview
     [self initTextView];
@@ -125,11 +123,11 @@
 
 }
 
-#pragma mark - load database data
-- (void)preLoadData
-{
-    self.jMemoData = [self.jMemoData queryOneNote:self.ids];
-}
+//#pragma mark - load database data
+//- (void)preLoadData
+//{
+//    self.jMemoData = [self.jMemoData queryOneNote:self.ids];
+//}
 
 #pragma mark - set text view
 - (void)initTextView
